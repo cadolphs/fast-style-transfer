@@ -9,3 +9,4 @@ class TestWebsite(BaseCase):
 
     def test_basic(self):
         self.open(self.live_server.url)
+        self.assert_title("Fast Style")
