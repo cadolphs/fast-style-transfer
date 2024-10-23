@@ -24,8 +24,12 @@ Let's work through the milestones, maybe consider different options. First try, 
 
 ### Breaking down the first story into tasks
 
-- Set up a simple Django app
+- [x] Set up a simple Django app
 - Add Alpine.js
+  - In particular, a drag-and-drop / file select area
+  - How would I make that incremental?
+  - And add tests...?
+
 - Set up tests and CI/CD
 - Write frontend code
 - Try to serve Django via Modal
