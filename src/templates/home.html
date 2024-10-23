@@ -4,8 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fast Style</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 <body>
-    <h1>FastStyle</h1>
+    <main>
+        <h1>FastStyle</h1>
+        <section x-data="fileUpload()" class="upload-area">
+            <h2>Select an image to upload</h2>
+            <div id="drop-area"
+                class="drop-zone"
+                @dragover.prevent @dragenter.prevent="dragging = true"
+                @dragleave="dragging = false"
+                @drop.prevent="handleDrop($event)"
+                :class="{'dragging': dragging}">
+
+                <input type="file" id="file-input" accept="image/*"
+                    @change="handleFileChange($event)" class="hidden">
+                <label for="file-input" class="button">Choose a file</label>
+                <p x-show="!file">Or drag and drop your file here</p>
+                <img x-show="file" :src="fileUrl" alt="Uploaded image" id="thumbnail" class="thumbnail">
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('fileUpload', () => ({
+                file: null,
+                fileUrl: null,
+                dragging: false,
+
+                handleFileChange(event) {
+                    const files = event.target.files;
+                    if (files.length > 0) {
+                        this.file = files[0];
+                        this.fileUrl = URL.createObjectURL(this.file);
+                    }
+                },
+
+                handleDrop(event) {
+                    const files = event.dataTransfer.files;
+                    if (files.length > 0) {
+                        this.file = files[0];
+                        this.fileUrl = URL.createObjectURL(this.file);
+                        this.dragging = false;
+                    }
+                },
+
+                uploadFile() {
+                    if (this.file) {
+                        console.log('Uploading file:', this.file.name);
+                        URL.revokeObjectURL(this.fileUrl);
+                    } else {
+                        alert('Please select a file first.');
+                    }
+                }
+            }));
+        });
+    </script>
 </body>
 </html>

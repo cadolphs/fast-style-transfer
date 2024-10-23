@@ -15,15 +15,14 @@ class TestWebsite(BaseCase):
         # She notices the title of the page is "Fast Style"
         self.assert_title("Fast Style")
 
-        return
         # She sees a drag-and-drop area on the page that says "Drop an image here"
         self.assert_element("div#drop-area")
 
         # In the code, she sees that there's an input field
-        file_input = self.find_element('input[type="file"]')
+        self.find_element('input[type="file"]')
 
         # She manually sets the value of the input field to a test image
-        file_input.send_keys("test_image.jpg")
+        self.choose_file("input[type='file']", "test_image.png")
 
         # She sees a thumbnail of the image she uploaded
         self.assert_element("img#thumbnail")
