@@ -26,3 +26,7 @@ class TestWebsite(BaseCase):
 
         # She sees a thumbnail of the image she uploaded
         self.assert_element("img#thumbnail")
+
+    def test_styling(self):
+        self.open(self.live_server.url)
+        assert self.get_property_value("h1", "text-align") == "center"
