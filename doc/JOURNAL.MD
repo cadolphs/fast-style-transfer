@@ -1,5 +1,9 @@
 # Dev Journal
 
+## 2024-12-07
+
+Long break because work ;) Let's revisit. Instead of doing Advent of Code (super fun!) let's do this project instead. Where're we at? Still at the very first story. We do have a simple Django app that runs locally. Next, we want to do some basic styling. We have our styles.scss going. Let's follow the CUBE methodology.
+
 ## 2024-10-16
 
 Just starting. Want to create a sort of web app where I can have images, or possibly video (real time) go through style transfer. Does not need to work with arbitrary style images from the get go. It's okay if it requires re-training.
@@ -25,7 +29,7 @@ Let's work through the milestones, maybe consider different options. First try, 
 ### Breaking down the first story into tasks
 
 - [x] Set up a simple Django app
-- Add Alpine.js
+- Add Alpine.js and CSS
   - In particular, a drag-and-drop / file select area
   - How would I make that incremental?
   - And add tests...?
