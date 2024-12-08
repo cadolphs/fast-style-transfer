@@ -11,28 +11,35 @@
 <body class="bg-light color-primary font-base">
     <header role="banner" class="[ site-head ] [ bg-tertiary-glare ]">
         <div class="wrapper">
-            <h1>FastStyle</h1></header>
+            <h1 class="text-600">FastStyle</h1></header>
         </div>
     <main>
         
-        
-        <section x-data="fileUpload()" class="upload-area">
+    <article class="wrapper">
+        <div class="gap-top-700">
             <h2>Select an image to upload</h2>
+        </div>
+        <div x-data="fileUpload()" class="[ upload-area ]">
             <div id="drop-area"
-                class="drop-zone"
-                @dragover.prevent @dragenter.prevent="dragging = true"
+                class="upload-area__drop-zone"
+                @dragover.prevent="dragging = true"
                 @dragleave="dragging = false"
                 @drop.prevent="handleDrop($event)"
-                :class="{'dragging': dragging}">
+                :data-dragging="dragging ? 'true' : 'false'">
 
                 <input type="file" id="file-input" accept="image/*"
-                    @change="handleFileChange($event)" class="hidden">
-                <label for="file-input" class="button">Choose a file</label>
+                    @change="handleFileChange($event)" class="visually-hidden">
+                <label for="file-input" class="button" x-show="!file">Choose a file</label>
                 <p x-show="!file">Or drag and drop your file here</p>
-                <img x-show="file" :src="fileUrl" alt="Uploaded image" id="thumbnail" class="thumbnail">
+                <div class="upload-area__img_container">
+                    <img x-show="file" :src="fileUrl" alt="Uploaded image" id="thumbnail" class="upload-area__thumbnail">
+                    <button x-show="file" @click="file = null; fileUrl = null" class="upload-area__x" data-variant="ghost">x</button>
+                </div>
             </div>
-        </section>
+        </div>
+    </article>
     </main>
+    
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('fileUpload', () => ({

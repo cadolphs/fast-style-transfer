@@ -1,0 +1,41 @@
+.upload-area {
+    background: get-color('light-shade');
+    padding: get-size('500');
+
+    &__drop-zone {
+        position: relative;
+        border: 2px dashed get-color('secondary');
+        padding: get-size('500');
+        text-align: center;
+        cursor: pointer;
+    }
+
+    &__drop-zone[data-dragging='true'] {
+        background: get-color('tertiary-glare');
+    }
+
+
+    &__img_container {
+        position: relative;
+        display: inline-block;
+        margin-right: get-size('300');
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    &__x {
+        @extend .button;
+
+        position: absolute;
+        top: 8px;
+        right: 8px;
+
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+    }
+}
