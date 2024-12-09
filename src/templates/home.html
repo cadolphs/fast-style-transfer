@@ -25,10 +25,11 @@
                 @dragover.prevent="dragging = true"
                 @dragleave="dragging = false"
                 @drop.prevent="handleDrop($event)"
+                @click="$refs.fileInput.click()"
                 :data-dragging="dragging ? 'true' : 'false'">
 
                 <input type="file" id="file-input" accept="image/*"
-                    @change="handleFileChange($event)" class="visually-hidden">
+                    @change="handleFileChange($event)" x-ref="fileInput" class="visually-hidden">
                 <label for="file-input" class="button" x-show="!file">Choose a file</label>
                 <p x-show="!file">Or drag and drop your file here</p>
                 <div class="upload-area__img_container">
