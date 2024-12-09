@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light color-primary font-base">
     <header role="banner" class="[ site-head ] [ bg-tertiary-glare ]">
-        <div class="wrapper">
+        <div class="[ site-head__inner ] [ wrapper ]">
             <h1 class="text-600">FastStyle</h1></header>
         </div>
     <main>
@@ -36,6 +36,7 @@
                     <button x-show="file" @click="file = null; fileUrl = null" class="upload-area__x" data-variant="ghost">x</button>
                 </div>
             </div>
+            <button @click="uploadFile" class="[ button ] [ gap-top-500 ]" x-show="file">Upload file</button>
         </div>
     </article>
     </main>
@@ -66,8 +67,8 @@
 
                 uploadFile() {
                     if (this.file) {
-                        console.log('Uploading file:', this.file.name);
-                        URL.revokeObjectURL(this.fileUrl);
+                        console.log('Uploading file:', this.fileUrl);
+                        // URL.revokeObjectURL(this.fileUrl);
                     } else {
                         alert('Please select a file first.');
                     }

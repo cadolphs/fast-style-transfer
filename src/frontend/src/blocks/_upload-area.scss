@@ -1,8 +1,9 @@
 .upload-area {
-    background: get-color('light-shade');
+
     padding: get-size('500');
 
     &__drop-zone {
+        background: get-color('light-shade');
         position: relative;
         border: 2px dashed get-color('secondary');
         padding: get-size('500');
@@ -20,9 +21,9 @@
         display: inline-block;
         margin-right: get-size('300');
 
-        img {
-            max-width: 100%;
-        }
+
+        max-width: 50%;
+        max-height: 50%
     }
 
     &__x {
